@@ -2,7 +2,7 @@
 title: "System Calling Conventions for Interfacing with Assembly"
 subtitle: "Intel Linux and Windows Calling Conventions"
 author: "Jason Curl"
-date: "2022-01-30"
+date: "2022-02-04"
 subject: "Programming"
-keywords: ["Windows", "System V ABI", "C", "Assembly", "Intel", "x86", "stdcall", "fastcall" ]
+keywords: ["Windows", "System V ABI", "C", "Assembly", "Intel", "x86", "x64", "x86-64", "stdcall", "fastcall" ]
 ...

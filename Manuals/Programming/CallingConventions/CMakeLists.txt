@@ -8,6 +8,7 @@ set(SOURCE_FILES
     Section_03_02_Windows64bit.md
     Section_04_00_LinuxIntel.md
     Section_04_01_LinuxGcc32bit.md
+    Section_04_02_LinuxGcc64bit.md
 )
 
 add_document(
