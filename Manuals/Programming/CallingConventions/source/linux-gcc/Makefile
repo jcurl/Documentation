@@ -1,24 +1,23 @@
-all: functest func.asm functest.asm
+CC ?= gcc
+CFLAGS ?= -g
+OBJDUMP ?= objdump
+RM ?= rm
+
+all: functest functest.asm func.o.asm functest.o.asm
 
 functest: func.o functest.o
-	gcc func.o functest.o -o functest
-	
-func.o: func.c
-	gcc -g -c func.c -o func.o -O0
-	
-functest.o: functest.c
-	gcc -g -c functest.c -o functest.o -O0
+	${CC} $? -o $@
 
-func.asm: func.o
-	objdump -d func.o -M intel > func.asm
+%.o: %.c
+	${CC} ${CFLAGS} -c $< -o $@ -O0
 
-functest.asm: functest.o
-	objdump -d functest.o -M intel > functest.asm
-	
+%.asm: %
+	${OBJDUMP} -d $< -M intel > $@
+
 clean:
-	rm func.o
-	rm functest.o
-	rm functest
-	rm func.asm
-	rm functest.asm
-	
+	${RM} func.o
+	${RM} functest.o
+	${RM} functest
+	${RM} func.o.asm
+	${RM} functest.o.asm
+	${RM} functest.asm
