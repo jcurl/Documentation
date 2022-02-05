@@ -18,7 +18,7 @@ By all means, I wouldn't call it professional, but sufficiently good enough to
 support myself in my own work.
 
 Since this document was first written, Linux distributions are now generally
-64-bit and ARM processors have become more ubiquituous for mainstream use. Work
+64-bit and ARM processors have become more ubiquitous for mainstream use. Work
 may be extended later to include more information.
 
 ## Copyright

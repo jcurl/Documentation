@@ -46,7 +46,7 @@ Return Values are given in registers.
 * Integers are returned in `RAX`
 * Floats and doubles are returned in `XMM0`
 
-| Parameter Tyep                               | How Passed                                                                        |
+| Parameter Type                               | How Passed                                                                        |
 | -------------------------------------------- | --------------------------------------------------------------------------------- |
 | Floating Point                               | First 4 parameters - `XMM0` through to `XMM3`. Others are passed on the stack.    |
 | Integer                                      | First 4 parameters - `RCX`, `RDX`, `R8`, `R9`. Others are passed on the stack.    |
@@ -72,13 +72,13 @@ to stdcall.
 * The caller allocates space for the return struct.
 * The first parameter (so in `RCX`) contains the pointer to the struct being
   returned and is given to the callee.
-* All other paramters are shifted to the right by one. That is, the first
+* All other parameters are shifted to the right by one. That is, the first
   parameter is now passed in `RDX`, up to the third parameter (`R8` and then
   `R9`) with remaining parameters pushed on to the stack.
 * On return, the `RAX` register contains the pointer to the struct being
   returned.
 * The caller is responsible for cleaning up the stack space allocated for the
-  return struct, conistent with above.
+  return struct, consistent with above.
 
 Variable argument lists are supported by the Windows 64-bit ABI.
 
@@ -538,7 +538,7 @@ The stack in the caller, based on `RSP` looks like
 
 A struct is passed as a pointer. The caller is responsible for making a copy of
 the original struct so if it's modified by the callee, the changes aren't
-propogated in the original copy.
+propagated in the original copy.
 
 ```c
 struct mystruct {
@@ -765,8 +765,8 @@ myFunc:
   0000000140001060: F3 C3              rep ret
 ```
 
-The code remains the same indendent of the function being called. Let's look at
-the function implementing a variable number of arguments.
+The code remains the same independent of the function being called. Let's look
+at the function implementing a variable number of arguments.
 
 * Here we see the compiler, for the first time, making use of the shadow
   parameters, putting the results on the stack (instructions `140001030` to
@@ -892,7 +892,7 @@ The stack in the caller, based on `RSP` looks like
 | `qword ptr [RSP+88]` |                                 |
 | `qword ptr [RSP+80]` |                                 |
 | `qword ptr [RSP+72]` | Parameter 9                     |
-| `qword ptr [RSP+64]` | Paramater 8                     |
+| `qword ptr [RSP+64]` | Parameter 8                     |
 | `qword ptr [RSP+56]` | Parameter 7                     |
 | `qword ptr [RSP+48]` | Parameter 6                     |
 | `qword ptr [RSP+40]` | Parameter 5                     |

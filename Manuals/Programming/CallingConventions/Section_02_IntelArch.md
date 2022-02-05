@@ -1,6 +1,6 @@
 # Intel Architecture
 
-## Intel Architcture for 32-bit
+## Intel Architecture for 32-bit
 
 A summary of the registers and conventions are given here as a refresher.
 Readers wanting more information should refer to the documentation by Intel.
@@ -65,7 +65,7 @@ stack information for code compiled.
 
 #### EBP Based Stack Frames
 
-The normal practice for unoptimised code generation is to use the `EBP` register
+The normal practice for unoptimized code generation is to use the `EBP` register
 as the stack frame pointer. The callee is generally responsible for preserving
 the `EBP` register so it is unchanged on exit. The equivalent stack frame based
 on `EBP` is provided below:
@@ -218,3 +218,17 @@ The following conditions are to be interpreted after a `CMP` operation.
 | BE / NA   | CF=1 or ZF=1   | Below or Equal / Not Above. value1 <= value2.   |
 | A / NBE   | CF=0 and ZF=0  | Above / Not Below or Equal. value1 > value2.    |
 | B / NAE   | CF=1           | Below / Not Above or Equal. value1 < value2     |
+
+## Word Sizes
+
+The following word sizes are used in this document, especially when describing
+stack frames.
+
+| Mnemonic | Size                  |
+| -------- | --------------------- |
+| `word`   | 2 bytes               |
+| `dword`  | 4 bytes (double word) |
+| `qword`  | 8 bytes (quad word)   |
+| `oword`  | 16 bytes (octal word) |
+| `yword`  | 32 bytes (y word)     |
+| `zword`  | 64 bytes (z word)     |

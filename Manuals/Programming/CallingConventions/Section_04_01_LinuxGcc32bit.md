@@ -84,7 +84,7 @@ The other registers must be preserved, e.g. `EBP`, `EBX`, `EDI`, `ESI` and
 `ESP`. The System V ABI describes some detail as to why these registers must be
 preserved:
 
-* The `EBP` holds the base frame for the current stack frame, soemtimes called
+* The `EBP` holds the base frame for the current stack frame, sometimes called
   the frame-pointer. It's generally noted that some debuggers rely on a valid
   `EBP` to provide debugging information for the current function. The callee
   would set up it's own stack frame, but on return it must be reset to the
@@ -138,10 +138,10 @@ int test_funcintr(void)
 Observations
 
 * The result is placed in the register `EAX`
-* The caller has allocated 24-bytes stack. Although it's not really needed, the
-  compiler has all optimisations turned off so it performs some useless
-  instructions such as copying the result to a variable on the stack, then
-  copying it back to the register for the return value.
+* The caller has allocated 24-bytes stack for itself. Although it's not really
+  needed, the compiler has all optimisations turned off so it performs some
+  useless instructions such as copying the result to a variable on the stack,
+  then copying it back to the register for the return value.
 
 The callee doesn't have any parameters and doesn't use the stack except to store
 the stack frame pointer, so we don't describe the stack frame here.
@@ -199,7 +199,7 @@ Observations
 
 ##### 64-bit Return Needing only 32-bits
 
-Even if the result fits within 32-bits, the compiler correctly clears the uppoer
+Even if the result fits within 32-bits, the compiler correctly clears the upper
 32-bits.
 
 ```c
@@ -294,7 +294,7 @@ int test_funcint(void)
   44:   c3                      ret
 ```
 
-Obervations
+Observations
 
 * The GCC compiler prefers to allocate space on the stack and then move the
   values onto the stack, instead of pushing the parameters.
@@ -366,7 +366,7 @@ int test_funcchar(void)
   69:   c3                      ret
 ```
 
-Obervations
+Observations
 
 * Even though a `char` requires only one byte, 4 bytes are allocated on the
   stack. The values on the stack have the upper bits cleared.
@@ -474,7 +474,7 @@ Contents of section .rodata:
   98:   c3                      ret
 ```
 
-Obervations
+Observations
 
 * Floats are copied onto the stack, taking 4-bytes, as like integers.
 * The result is provided in `ST(0)`, the first element on the FPU stack
@@ -577,7 +577,7 @@ int test_funcfloatint(void)
   ed:   c3                      ret
 ```
 
-Obervations
+Observations
 
 * A mix of floats and integers are both pushed onto the stack as 32-bit values
 * The logic reading the FPU control word temporarily masks out the Overflow (bit
@@ -665,7 +665,7 @@ int test_funcdouble(void)
  125:   c3                      ret
 ```
 
-Obervations
+Observations
 
 * A mix of floats and integers are both pushed onto the stack as 32-bit values.
 * The logic reading the FPU control word temporarily masks out the Overflow (bit
@@ -781,7 +781,7 @@ int test_funcstructvalue(void)
  135:   c3                      ret
 ```
 
-Obervations
+Observations
 
 * Code lines `16f-192` initialises `struct mystruct x = {1, 2, 3, 4, 5, 6}`.
 * Code lines `199-1ba` initialise `struct mystruct y = {0, }`.
@@ -915,7 +915,7 @@ int test_funcstructret(void)
  19a:   c2 04 00                ret    0x4
 ```
 
-Obervations
+Observations
 
 * The first (hidden) parameter is a pointer to the callers stack, where the
   result should be given.
@@ -1073,7 +1073,7 @@ int test_funcvarargs4(void)
 }
 ```
 
-```
+```asm
 00000246 <test_funcvarargs4>:
  246:   55                      push   ebp
  247:   89 e5                   mov    ebp,esp
