@@ -11,7 +11,10 @@ ways to plan construction of software so that:
   team members of similar skill sets
 * Communication of design and implementation to various team members
 
-- [1. What do Customers Want](#1-what-do-customers-want)
+- [1. Motivation](#1-motivation)
+  - [1.1. What do Customers Want](#11-what-do-customers-want)
+  - [1.2. Get to Know your Users](#12-get-to-know-your-users)
+  - [1.3. Break Down Boundaries Between Teams](#13-break-down-boundaries-between-teams)
 - [2. Background and Assumptions](#2-background-and-assumptions)
   - [2.1. Mock Ups and Prototypes](#21-mock-ups-and-prototypes)
   - [2.2. System Architecture](#22-system-architecture)
@@ -25,9 +28,13 @@ ways to plan construction of software so that:
   - [4.1. Requirements Construction](#41-requirements-construction)
   - [4.2. Architecture](#42-architecture)
   - [4.3. Organizing Construction](#43-organizing-construction)
-  - [4.4 Jira](#44-jira)
+    - [4.3.1. Mind Mapping for Tasks](#431-mind-mapping-for-tasks)
+    - [4.3.2. Task Based List](#432-task-based-list)
+  - [4.4. Jira](#44-jira)
 
-## 1. What do Customers Want
+## 1. Motivation
+
+### 1.1. What do Customers Want
 
 Agile acknowledges that customers cannot specify all details up front, obstacles
 will appear on the way, and what seemed important at the beginning turns out not
@@ -44,50 +51,90 @@ This document tries to provide a pragmatic approach that could be adapted to
 suit your own projects, concentrating on a specific team implementing a specific
 component within a much larger project and system architecture.
 
+### 1.2. Get to Know your Users
+
+Knowing your users is not the same as knowing your customer. Every developer
+should strive to know why we're building this component. Who are the stake
+holders? How do they plan to use the component?
+
+Various stake holders may be the person or organization:
+
+* commissioning the software project;
+* that will test the software;
+* The end users that want to achieve their goals;
+* power users or beginners, and their skill levels;
+* those that will train others in the usage of the software;
+* the support team handling incoming complaints for the software;
+* etc.
+
+Depending on the use cases, the stake holders may be different.
+
+### 1.3. Break Down Boundaries Between Teams
+
+The motivation of this document is to remind every agile team that success comes
+from breaking down boundaries. Asking questions and having every one work
+towards a common goal is the most likely way to build success.
+
+This starts from the customer and stake holder discussions at every level. Be
+curious about more than just the domain problem assigned. Recognize that teams
+are not silos and that boundaries between teams must be crossed else use cases
+often fail at these boundaries.
+
+Program management should encourage communication between multiple levels. Where
+communication must be controlled, it should be encouraged, summarized and then
+communicated further.
+
 ## 2. Background and Assumptions
+
+Agile doesn't excuse for team structure and experts. Larger projects using Agile
+still need people of roles with the experience required to make the correct
+decisions, and a structured break down of the larger goals into smaller
+achievable goals.
 
 ### 2.1. Mock Ups and Prototypes
 
-Most projects I've worked in are based on products and ideas that are already on
-the market, and building on top of them.
+For a new product, or an existing product with new features, it might not be
+immediately obvious on how to implement a feature aimed for those using the
+product.
 
-On the other hand, for a new project, it is absolutely necessary to estimate the
-high level system design before one can start with the detailed architecture. It
-is important to first verify that most of the work in the next steps make sense.
-To do this requires:
+I've found it is absolutely necessary to estimate the high level system design
+before one can start with the detailed architecture. It is important to first
+verify that most of the work in the next steps make sense. To do this requires:
 
 * Discussions with the stake holders on the use cases from their perspective
 * Understand the proposed system designs
-* Choose the frameworks and prototype
+
+and for new products, there are some more fundamental questions that arise:
+
+* Choose the frameworks and prototype (for new products)
 * Research best practices and common pitfalls
 
 ### 2.2. System Architecture
 
-Automotive have generally followed development guidelines, such as ISO9001,
-ISO26262 and ASPICE. These define management structure, processes and best
-practices.
+The System Architecture is the break down of the general requirements so that
+they can be allocated between the hardware requirements and the general software
+requirements. It is the interface between the hardware and the software.
 
-The construction of a product requires breaking down the high level to the
-smallest components.
+A product requires breaking down the high level details to the smallest
+components. Important questions for embedded devices from customer requirements
+that help define the requirements on the system may be:
 
-* Top level customer requirements that help define the requirements on the
-  system
-  * Storage Requirements
-  * Interfaces to external devices
-  * Bandwidth requirements for I/O (memory, GPU, network, etc.)
-  * Performance requirements
-  * Safety requirements
-  * etc.
+* Storage Requirements
+* Interfaces to external devices
+* Bandwidth requirements for I/O (memory, GPU, network, etc.)
+* Performance requirements
+* Safety requirements
+* etc.
 
-This allows a System Architect to then separate requirements between hardware
-engineers and software engineers.
+In embedded development, hardware generally has strictly time-bound cycles, so
+it's important to define the hardware constraints as early as possible.
+Identifying requirements on hardware from detailed software requirements later
+is expensive to correct, either as workarounds in software, or changes in
+hardware. Experience in this phase of the project can help define if the project
+meets its time deadlines.
 
-Hardware generally has fixed cycles, their strictly timebound, so it's important
-to get these constraints well defined as early as possible. Identifying
-requirements on hardware from detailed software requirements later is expensive
-to correct, either as workarounds in software, or changes in hardware.
-Experience in this phase of the project can help define if the project meets its
-time deadlines.
+For a software engineer, the outcome is effectively the hardware on which the
+software is running and the constraints.
 
 ### 2.3. Software Architecture
 
@@ -101,12 +148,35 @@ to define:
 * Choose which frameworks should be used, which are common to multiple domains.
   Evaluate the various constraints the organization has (licensing,
   extensibility, in-house development, what common problems are being solved)
+* Cover the security requirements and constraints, define the frameworks which
+  should be used
 
-A software architect will generally start trying to layer the software
-components based on interactions and responsibilities, highlighting horizontal
-and vertical components depending on the experience of the organization.
+The second task of a software architecture is to allocate the requirements from
+the system architect to individual components. There may be elements of reuse
+required influencing the structure and size of new components. Although
+undesirable, an organizational structure may influence the architecture design.
+
+The output for a software engineer is to receive more detailed requirements and
+design details for their components and to have more information about the
+realization of customer use cases through sequences and data flow analysis, or
+other modelling and simulation.
 
 ## 3. Component Architecture and Planning
+
+This section goes into the most detail for software engineers to take a software
+and a system architecture and generate a plan on how to construct software
+components. They are encouraged to discuss further with the stake holders to
+learn as much as possible about the common use cases and constraints while
+constructing the software. Stake holders may be the customers, program managers,
+software architects that defined the constraints on the components and system
+architects.
+
+Even here, the success in building a product is building something that others
+want to use.
+
+Even questions that sound irrelevant may become important later, such as power
+requirements, how the system works. It helps them make the right decisions and
+to join relationships with otherwise abstract requirements.
 
 ### 3.1. A Background on Agile Planning Structure
 
@@ -127,7 +197,7 @@ The following sections will use the terms:
 
 * An Epic. Generally I like to have only one Epic per team, that keeps the
   responsibility of the Epic within the team, empowering them to do what ever is
-  required to meet the goals.
+  required to meet the goals and promoting ownership for the Epic by the team.
 
 * User Stories. An Epic is broken down into user stories, which is the smallest
   customer visible use case for the Epic / component being developed. It should
@@ -168,7 +238,7 @@ Agile stories are often written with the idea
 
 "As the *persona*, I want to *action*, so that *result* ...."
 
-The use cases should be prioritised in what is needed first. Collect enough use
+The use cases should be prioritized in what is needed first. Collect enough use
 cases that planning can be managed. Too many use cases and the planning overhead
 is too high by reorganizing and re-estimating.
 
@@ -194,7 +264,8 @@ Techniques for building an architecture could be:
 * Domain Driven Design
 * Model-View-Controller or Model-View-Presenter
 * Test Driven Design
-* Combination of above and other best practices
+* Combination of above; and
+* other best practices
 
 In any case, it is specific to your domain, and requires expertise to build. The
 better the architecture, the easier it is then to plan its construction.
@@ -226,6 +297,14 @@ organization. In my repositories, I prefer a combination of markdown and UML
 Architect](https://sparxsystems.com/) and others). More advanced tools also
 allow simulations to verify designs before implementation, or the conversion of
 architecture into automatically generated code.
+
+One should be careful at this level not to write code at the design level. Often
+I've seen detailed design including private members of classes. This is too
+detailed. The focus in the architecture is to ensure that use cases can be
+realized, and be flexible to modify the architecture if in the coding phase it
+is found out to be wrong. Therefore a balance must be found between the time it
+takes to rework the architecture, and the time it takes architecture to verify
+design before coding starts.
 
 ### 3.4. Construct the Tasks
 
@@ -305,7 +384,7 @@ daily work).
 ### 4.1. Requirements Construction
 
 An example of how Enterprise Architect was used to identify the requirements.
-There wasn't much public information about FIBEX files referenced by
+There wasn't much public information about Fibex files referenced by
 [Specification of Diagnostic Log and Trace
 4.2.2](https://www.autosar.org/fileadmin/user_upload/standards/classic/4-2/AUTOSAR_SWS_DiagnosticLogAndTrace.pdf)
 used at the time, so we wrote down what we learned when trying to compare it
@@ -325,13 +404,24 @@ architecture to start construction.
 
  ![Non-Verbose Decoder Design](ArchitectureBreakdown/Architecture.png)
 
+It could be a combination of UML and textual documentation, which ever is most
+efficient for communication ideas.
+
 ### 4.3. Organizing Construction
+
+I've used two ways to organize the construction:
+
+* A mind map can be used to visualize the ordering of tasks as a network diagram
+* Task Based List as in Microsoft Project
+
+#### 4.3.1. Mind Mapping for Tasks
 
 To consider how to organize the construction of the software, Enterprise
 Architect was used to build a mind-map. Trying to put these directly in Jira was
 avoided as
 
-* Creating tickets is fast, we didn't want to fulfil the DoD at this time
+* Creating tasks in Jira are tedious, we didn't want to fulfil the DoD at this
+  time. Reworking tasks in case of a mistake is even more tedious.
 * Getting an Overview of dependencies in a single diagram is hard, unless one
   has specialized plugins which we didn't have.
 * Using EA is easy to map the elements to the architecture, or sequence
@@ -352,7 +442,28 @@ traceability.
 
  ![Non-Verbose Mind-Map Jira Tag](ArchitectureBreakdown/MindMap-JiraTag.png)
 
-### 4.4 Jira
+#### 4.3.2. Task Based List
+
+An alternative is to use a tool, such as a spread sheet or planning software to
+note down the tasks for each use case. This method can be easier to be use case
+oriented.
+
+Scan through the requirements and architecture building up from the minimum
+viable use case and define this as the first story. Then find the smallest
+visible feature to add on top. Continue this until a useful version is obtained.
+A useful version might not be the complete product, but something that is
+worthwhile to demonstrate.
+
+For example, while building a different tool to read DLT files, I used Microsoft
+Project to create stories. Then for each story I defined tasks that when
+combined, construct that story. The tasks are required to reduce the scope
+according to the architecture. Reducing the scope to a task helps keep the
+construction manageable by keeping the size of the change small enough for other
+members of the team to understand the change being made.
+
+ ![Project Task Plan](ArchitectureBreakdown/ProjectUserStoryPlan.png)
+
+### 4.4. Jira
 
 The tasks were copied into Jira.
 
