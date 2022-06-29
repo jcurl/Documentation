@@ -1,1 +1,3 @@
 add_subdirectory(CallingConventions)
+add_subdirectory(CS_CodingStandards)
+
