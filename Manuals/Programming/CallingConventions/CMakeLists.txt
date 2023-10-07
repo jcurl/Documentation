@@ -2,13 +2,14 @@ set(SOURCE_FILES
     metadata.yaml
     Section_00_Foreword.md
     Section_01_Intro.md
-    Section_02_IntelArch.md
-    Section_03_00_WindowsIntel.md
-    Section_03_01_WindowsStdCall.md
-    Section_03_02_Windows64bit.md
-    Section_04_00_LinuxIntel.md
-    Section_04_01_LinuxGcc32bit.md
-    Section_04_02_LinuxGcc64bit.md
+    Section_02_00_ProgrammingModels.md
+    Section_03_00_IntelArch.md
+    Section_04_00_WindowsIntel.md
+    Section_04_01_WindowsStdCall.md
+    Section_04_02_Windows64bit.md
+    Section_05_00_LinuxIntel.md
+    Section_05_01_LinuxGcc32bit.md
+    Section_05_02_LinuxGcc64bit.md
 )
 
 add_document(

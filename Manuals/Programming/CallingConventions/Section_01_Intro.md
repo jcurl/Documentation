@@ -4,13 +4,11 @@ Calling conventions are the rules that allow different software components,
 written by different software vendors, potentially using different compilers or
 different languages, to interface with one another.
 
-This paper aims to document by example how very specific calling conventions
-work. The goal is to provide examples that can be used as a practical reference
-for developers to explicitly write code to adhere to the calling conventions.
-There is a lot of information on the Internet but unfortunately, some of the
-terminology used is not clear (ordering left to right, or right to left), they
-lack significant details (variable argument lists, structures, floats) or need
-examples.
+In this paper you'll find examples of how compilers implement the calling
+conventions. It does not replace the standards themselves. There is a lot of
+information on the Internet but unfortunately, some of the terminology used is
+not clear (ordering left to right, or right to left), they lack significant
+details (variable argument lists, structures, floats) or need examples.
 
 The code examples presented are in C. The output is disassembled by various
 tools, dependent on the system that’s being run. For example, the `dumpbin.exe`
