@@ -23,7 +23,7 @@ may be extended later to include more information.
 
 ## Copyright
 
-Copyright (C) 2012 - 2023, Jason Curl
+Copyright (C) 2012 - 2024, Jason Curl
 
 ## Revision History
 
@@ -32,3 +32,4 @@ Copyright (C) 2012 - 2023, Jason Curl
 | 2012-11-10 | First version using LaTeX                |
 | 2022-01-30 | Converted to Markdown, build with Pandoc |
 | 2023-10-07 | Add Type Models                          |
+| 2024-04-20 | Update for AARCH64                       |

@@ -1,4 +1,4 @@
-## GCC: 32-bit Sys V ABI
+## GCC: 32-bit Sys V ABI on Intel
 
 The Linux ABI for Intel computers (e.g. your laptop running Linux) for user
 space programs is based on the System V Application Binary Interface.

@@ -4,12 +4,14 @@ set(SOURCE_FILES
     Section_01_Intro.md
     Section_02_00_ProgrammingModels.md
     Section_03_00_IntelArch.md
+    Section_03_01_ArmArch.md
     Section_04_00_WindowsIntel.md
     Section_04_01_WindowsStdCall.md
     Section_04_02_Windows64bit.md
-    Section_05_00_LinuxIntel.md
-    Section_05_01_LinuxGcc32bit.md
-    Section_05_02_LinuxGcc64bit.md
+    Section_05_00_Linux.md
+    Section_05_01_LinuxGccIntelx86.md
+    Section_05_02_LinuxGccAmd64.md
+    Section_05_03_LinuxGccA64.md
 )
 
 add_document(

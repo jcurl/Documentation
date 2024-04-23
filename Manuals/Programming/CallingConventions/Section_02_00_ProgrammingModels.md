@@ -33,7 +33,7 @@ and further in the document
 The [CPP Reference](https://en.cppreference.com/w/cpp/language/types) lists the
 types as well.
 
-## Models used by OSes
+### Models used by OSes
 
 | OS            | Processor    | Model 64-bit | Model 32-bit | Struct Pack                            |
 | ------------- | ------------ | ------------ | ------------ | -------------------------------------- |
@@ -53,14 +53,14 @@ References:
 
 * [Windows](https://learn.microsoft.com/en-us/cpp/build/reference/zp-struct-member-alignment)
 
-## Alignment of Fields in a Struct
+### Alignment of Fields in a Struct
 
-On Windows (ARM and Intel), the compiler aligns class and struct members on their size value:
-`bool` and `char` on 1-byte boundaries, `short` on 2-byte boundaries, `int`,
-`long`, and `float` on 4-byte boundaries, and `long long`, `double`, and `long
-double` on 8-byte boundaries. This matches also the size of the datatypes for
-ILP32 and LLP64 so that alignment is on boundaries multiple of the datasize
-type.
+On Windows (ARM and Intel), the compiler aligns class and struct members on
+their size value: `bool` and `char` on 1-byte boundaries, `short` on 2-byte
+boundaries, `int`, `long`, and `float` on 4-byte boundaries, and `long long`,
+`double`, and `long double` on 8-byte boundaries. This matches also the size of
+the datatypes for ILP32 and LLP64 so that alignment is on boundaries multiple of
+the datasize type.
 
 On Linux, the alignment of structs depends on the alignment of the largest type
 in the structure, so as to guarantee all fields in the struct are natively

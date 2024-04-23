@@ -1,4 +1,4 @@
-## GCC: 64-bit 9.3.0 Ubuntu 20.04
+## GCC: 64-bit 9.3.0 Ubuntu 20.04 on Intel
 
 ### Naming Convention
 
